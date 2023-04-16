@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechShop</title>
+</head>
+
+<body>
+  <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal"
+            data-bs-target="#agregarArticulo">
+            <i class="fas fa-plus"></i> Agregar Articulo
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section th:fragment="agregarArticulo">
+    <div id="agregarArticulo" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title">Agregar Articulo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form th:action="@{/articulo/guardar}" th:object="${articulo}" method="POST" class="was-validated">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" required="true" />
+              </div>
+              <div class="mb-3">
+                <label for="categoria">idCategoria</label>
+                <input type="int" class="form-control" name="categoria" />
+              </div>
+              <div class="mb-3">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" name="precio" required="true" />
+              </div>
+              <div class="mb-3">
+                <label for="existencias">Existencias</label>
+                <input type="number" class="form-control" name="existencias" />
+              </div>
+              <div class="mb-3">
+                <label for="imagen">Imagen</label>
+                <input type="text" class="form-control" name="imagen" />
+              </div>
+              <div class="mb-3">
+                <label for="detalle">Detalle</label>
+                <input type="text" class="form-control" name="detalle" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section th:fragment="listadoArticulos" id="articulos">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>Listado de Articulos</h4>
+            </div>
+            <div th:if="${articulos != null and !articulos.empty}">
+              <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Existencias</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="articulo, contador : ${articulos}">
+                    <td>[[${contador.count}]]</td>
+                    <td>[[${articulo.descripcion}]]</td>
+                    <td>[[${articulo.precio}]]</td>
+                    <td>[[${articulo.existencias}]]</td>
+                    <td>
+                      <a th:href="@{/articulo/eliminar/}+${articulo.id_articulo}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Eliminar</a>
+                      <a th:href="@{/articulo/modificar/}+${articulo.id_articulo}" class="btn btn-success">
+                        <i class="fas fa-pencil"></i> Modificar</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-center p-2" th:if="${articulos == null or articulos.empty}">
+              <span>Lista vacía</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-success text-white mb-3">
+            <div class="card-body">
+              <h3>Total Articulos</h3>
+              <h4 class="fs-2">
+                <i class="fas fa-users"></i> [[${totalArticulos}]]
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section th:fragment="editarArticulo">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form method="POST" th:action="@{/articulo/guardar}" th:object="${articulo}" class="was-validated">
+          <input type="hidden" name="idArticulo" th:field="*{id_articulo}" />
+          <!-- <section th:replace="~{articulo/fragmentos :: botonesEditar}" /> -->
+          <div id="details">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Actualizar</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label for="descripcion">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" th:field="*{descripcion}"
+                          required="true" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="categoria">idCategoria</label>
+                        <input type="int" class="form-control" name="apellidos" th:field="*{categoria}"
+                          required="true" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="detalle">Detalle</label>
+                        <input type="text" class="form-control" name="detalle" th:field="*{detalle}" required="true" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="precio">Precio</label>
+                        <input type="int" class="form-control" name="precio" th:field="*{precio}" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="imagen">Imagen</label>
+                        <input type="text" class="form-control" name="imagen" th:field="*{imagen}" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="existencias">Existencias</label>
+                        <input type="text" class="form-control" name="existencias" th:field="*{existencias}" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section th:fragment="botonesEditar">
+    <div class="container py-4 mb-4 bg-light">
+      <div class="row">
+        <div class="col-md-4 d-grid">
+          <a th:href="@{/articulo/listado}" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Regresar
+          </a>
+        </div>
+        <div class="col-md-4 d-grid">
+          <a th:href="@{/articulo/eliminar/}+${articulo.idArticulo}" class="btn btn-danger">
+            <i class="fas fa-trash"></i> Eliminar
+          </a>
+        </div>
+        <div class="col-md-4 d-grid">
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

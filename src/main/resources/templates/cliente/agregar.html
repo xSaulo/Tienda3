@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/agregar.css}">
+    <title>Agregar</title>
+</head>
+
+<body>
+
+    <section th:replace="~{cliente/fragmentos :: editarCliente}">
+
+    </section>
+    <!---->
+    <!-- <header class="flex-container header" th:replace="~{layout/plantilla :: header}"> -->
+    <!--     <div class="header-sections"> -->
+    <!--         <ul class="header-sections-list"> -->
+    <!--             <li class="item"><a th:href="@{/}" th:text="Inicio"></a></li> -->
+    <!--             <li class="item"><a th:href="@{/cliente/listar}" th:text="Listar"></a></li> -->
+    <!--             <li class="item"><a th:href="@{/cliente/agregar}" th:text="Agregar"></a></li> -->
+    <!--         </ul> -->
+    <!--     </div> -->
+    <!-- </header> -->
+    <!---->
+    <!-- <section class="flex-container section"> -->
+    <!---->
+    <!--     <div class="item1"> -->
+    <!--         <form class="form" th:action="@{/cliente/guardar}" method="post" th:object="${cliente}"> -->
+    <!--             <input type="hidden" name="id_cliente" th:field="*{id_cliente}"> -->
+    <!--             <input type="text" name="nombre" th:field="*{nombre}" required="true"></input> -->
+    <!--             <br> -->
+    <!--             <input type="text" name="apellidos" th:field="*{apellidos}"></input> -->
+    <!--             <br> -->
+    <!--             <input type="email" name="correo" th:field="*{correo}"></input> -->
+    <!--             <br> -->
+    <!--             <input type="text" name="telefono" th:field="*{telefono}"></input> -->
+    <!--             <br> -->
+    <!--             <input type="submit" name="guardar" value="Guardar"> -->
+    <!--         </form> -->
+    <!--     </div> -->
+    <!---->
+    <!-- </section> -->
+
+    <footer th:replace="~{layout/plantilla :: footer}">
+
+
+    </footer>
+</body>
+
+</html>

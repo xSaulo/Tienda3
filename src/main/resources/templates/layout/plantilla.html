@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:fragment="head">
+  <title>TechShop</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+</head>
+
+<body>
+
+  <header th:fragment="header" class="header">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+
+      <div class="container">
+
+        <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="#navbarCollapse">
+
+          <ul class="navbar-nav" sec:authorize="hasRole('ROLE_ADMIN')">
+            <li class="navbar-item px-2">
+              <a class="nav-menu-link nav-link" sec:authorized="hasRole('ROLE_ADMIN')"
+                th:href="@{/cliente/listar}">[[#{plantilla.clientes}]]</a>
+            </li>
+            <li class="navbar-item px-2">
+              <a class="nav-menu-link nav-link" sec:authorized="hasRole('ROLE_ADMIN')"
+                th:href="@{/cliente/agregar}">[[#{accion.agregar}]]</a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+    <section id="main-header" class="py-2 bg-success text-white">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-6">
+
+            <h1><i class="fas fa-cog"></i>[[#{index.nuestrosArticulos}]]</h1>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </header>
+
+  <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
+    <div class="container">
+
+      <div class="col">
+
+        <p class="lead text-center">
+          Copyright (c) 2023 Gabriel. All Rights Reserved. | <a th:href="@{/(lang=en)}">EN</a> <a
+            th:href="@{/(lang=es)}">ES</a>
+        <form method="post" th:action="@{/logout}">
+
+          <a href="#" onclick="this.parentNode.submit();">Logout</a>
+
+        </form>
+        </p>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

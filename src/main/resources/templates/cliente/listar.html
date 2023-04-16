@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <title>Listar</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}">
+        <div class="header-sections">
+            <ul class="header-sections-list">
+                <li class="item"><a th:href="@{/}" th:text="Inicio"></a></li>
+                <li class="item"><a th:href="@{/cliente/listar}" th:text="Listar"></a></li>
+                <li class="item"><a th:href="@{/cliente/agregar}" th:text="Agregar"></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="flex-container section">
+        <h2>
+            Listado
+        </h2>
+
+        <hr>
+
+        <section th:replace="~{cliente/fragmentos :: botonesAgregar}">
+
+        </section>
+
+        <section th:replace="~{cliente/fragmentos :: agregarCliente}">
+
+        </section>
+
+        <section th:replace="~{cliente/fragmentos :: listadoClientes}">
+
+        </section>
+
+        <!-- <div class="item1" th:if="${!clientes.empty}"> -->
+        <!-- <table class="table-clientes"> -->
+        <!-- <thead> -->
+        <!-- <th>Id</th> -->
+        <!-- <th>Credito</th> -->
+        <!-- <th>Nombre</th> -->
+        <!-- <th>Eliminar</th> -->
+        <!-- <th>Editar</th> -->
+        <!-- </thead> -->
+
+        <!-- <tr th:each="cliente : ${clientes}"> -->
+        <!-- <td th:text="${cliente.id_cliente}"></td> -->
+        <!-- <td th:text="${cliente.credito}"></td> -->
+        <!-- <td th:text="${cliente.nombre}"></td> -->
+        <!-- <td><a class="btn btn-danger" th:href="@{/cliente/eliminar/} + ${cliente.id_cliente} " -->
+        <!-- th:text="Eliminar"><i class="fas fa-trash"></i></a></td> -->
+        <!-- <td><a class="btn btn-success" th:href="@{/cliente/editar/} + ${cliente.id_cliente}" th:text="Editar"><i -->
+        <!-- class="fas fa-pencil"></i></a></td> -->
+        <!-- </tr> -->
+
+        <!-- </table> -->
+        <!-- </div> -->
+
+        <!-- </section> -->
+
+        <footer th:replace="~{layout/plantilla :: footer}">
+
+
+        </footer>
+</body>
+
+</html>

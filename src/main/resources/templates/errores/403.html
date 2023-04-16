@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <link rel="stylesheet" th:href="@{/styles/index.css}"> -->
+    <!-- <title>Inicio</title> -->
+</head>
+
+<body>
+
+    <header th:replace="~{layout/plantilla :: header}">
+
+    </header>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+
+                <div class="card">
+
+                    <div class="card-header bg-danger text-white">
+
+                        <h2> [[#{e403.titulo}]] </h2>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p class="card-text">
+                            [[#{e403.texto}]]
+                        </p>
+
+                        <div class="card-footer col text-center">
+
+                            <a th:href="@{/}" class="btn btn-danger">
+                                <i class="fas fa-arrow-left"></i>
+                                [[#{accion.regresar}]]
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer th:replace="~{layout/plantilla :: footer}">
+
+
+    </footer>
+</body>
+
+</html>
