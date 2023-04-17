@@ -17,22 +17,27 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // @Bean
-    // public InMemoryUserDetailsManager userDetailsService() {
-    // UserDetails user = User.builder()
-    // .username("Juan")
-    // .password("{noop}123")
-    // .roles("USER", "VENDEDOR")
-    // .build();
-    //
-    // UserDetails admin = User.builder()
-    // .username("rebeca")
-    // .password("{noop}456")
-    // .roles("ADMIN", "USER", "VENDEDOR")
-    // .build();
-    //
-    // return new InMemoryUserDetailsManager(user, admin);
-    // }
+ /*@Bean
+    public  UserDetailsService users(){
+       UserDetails admin = User.builder()
+               .username("juan")
+                .password("{noop}123")
+                .roles("USER", "VENDEDOR", "ADMIN")
+                .build();
+        UserDetails sales = User.builder()
+               .username("rebeca")
+                .password("{noop}456")
+                .roles("VENDEDOR", "ADMIN")
+                .build();
+         UserDetails user = User.builder()
+               .username("pedro")
+                .password("{noop}789")
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(user, sales, admin);
+    }   */
+
+
     
     @Autowired
     private UserDetailsService userDetailsService;

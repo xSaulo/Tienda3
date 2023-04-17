@@ -1,10 +1,10 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.tecno.tecno.Service.impl;
-
-
-import com.tecno.tecno.Repository.Item;
-import com.tecno.tecno.Service.ItemService;
-
+import com.tienda.domain.Item;
+import com.tienda.service.ItemService;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
@@ -63,7 +63,7 @@ public class ItemServiceImpl implements ItemService {
             if (Objects.equals(i.getIdArticulo(), item.getIdArticulo())) {
                 return i;
             }
-        } 
+        }
         return null;
     }
 

@@ -12,7 +12,7 @@ public class Item extends Articulo {
     }
 
     public Item(Articulo articulo) {
-        super.setIdArticulo(articulo.getIdArticulo());
+      //  super.setIdArticulo(articulo.getIdArticulo());
         super.setCategoria(articulo.getCategoria());
         super.setDescripcion(articulo.getDescripcion());
         super.setDetalle(articulo.getDetalle());
