@@ -1,63 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns="http://w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TecnoProductions</title>        
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:replace="~{carrito/fragmentosCarrito :: listadoArticulos}"/>
+        <footer th:replace="~{layout/plantilla :: footer}"/>  
 
-<head th:replace="~{layout/plantilla :: head}">
-    <!-- <meta charset="UTF-8"> -->
-    <!-- <link rel="stylesheet" th:href="@{/styles/index.css}"> -->
-    <!-- <title>Inicio</title> -->
-</head>
-
-<body>
-
-    <header th:replace="~{layout/plantilla :: header}">
-
-    </header>
-
-    <div class="container">
-
-        <div class="row row-cols-3">
-
-            <div th:each="articulo : ${articulos}" class="card">
-
-                <div class="card-body">
-
-                    <img th:src="${articulo.imagen}" width="100px" height="100px" alt="">
-                    <h5 class="card-title">[[${articulo.descripcion}]]</h5>
-                    <h6 class="card-subtitle mb-2 text-muted text-end">[[${articulo.precio}]]</h6>
-                    <a class="card-link" th:href="@{/carrito/comprar/} + ${articulo.id_articulo}"></a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- <header class="flex-container header"> -->
-    <!-- <div class="header-sections"> -->
-    <!-- <ul class="header-sections-list"> -->
-    <!-- <li class="item"><a th:href="@{/}" th:text="Inicio"></a></li> -->
-    <!-- <li class="item"><a th:href="@{/cliente/listar}" th:text="Listar"></a></li> -->
-    <!-- <li class="item"><a th:href="@{/cliente/agregar}" th:text="Agregar"></a></li> -->
-    <!-- </ul> -->
-    <!-- </div> -->
-    <!-- </header> -->
-
-    <!-- <section class="flex-container section"> -->
-
-    <!-- <div class="item1"> -->
-    <!-- <h1> -->
-    <!-- Clientes -->
-    <!-- </h1> -->
-    <!-- </div> -->
-
-    <!-- </section> -->
-
-    <footer th:replace="~{layout/plantilla :: footer}">
-
-
-    </footer>
-</body>
-
+        <script>
+            function addCard(formulario){             
+            var valor=formulario.elements[0].value;                
+            var url = '/carrito/agregar';
+            url = url + '/' +valor;
+            $("#resultsBlock").load(url);         
+            }
+        </script>
+    </body>
 </html>
